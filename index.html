@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Welcome">
-    <title>JayaandFiona.com</title>
+    <meta name="description" content="Welcome to JayaandFiona.com">
+    <title>Jaya and Fiona's Fun Zone</title>
     <style>
+        /* Overall Styling */
         body {
-            font-family: Lunare, sans-serif;
+            font-family: "Comic Sans MS", sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
@@ -15,44 +16,77 @@
             align-items: center;
             justify-content: center;
             min-height: 100vh;
-            background-color: #f4f4f4;
-            color: #333;
+            background: linear-gradient(45deg, #f9a8d4, #f3d1f4);
+            color: #555;
             text-align: center;
+            animation: colorChange 10s infinite alternate;
         }
+
+        /* Header */
         header {
             padding: 20px;
-            background-color: #333;
+            background-color: #ff6bcb;
             color: #fff;
             width: 100%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-size: 1.8em;
+            letter-spacing: 1px;
         }
+
+        /* Main Content */
         main {
             padding: 20px;
         }
+
+        p {
+            font-size: 1.2em;
+        }
+
+        /* Buttons */
+        a {
+            color: #fff;
+            text-decoration: none;
+            background-color: #ff94d8;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 20px;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        a:hover {
+            transform: scale(1.1);
+            background-color: #ffa7e2;
+        }
+
+        /* Footer */
         footer {
             margin-top: auto;
             padding: 10px;
-            background-color: #333;
+            background-color: #ff6bcb;
             color: #fff;
             width: 100%;
+            font-size: 1em;
         }
-        a {
-            color: #007bff;
-            text-decoration: none;
+
+        /* Background Animation */
+        @keyframes colorChange {
+            0% { background: linear-gradient(45deg, #f9a8d4, #f3d1f4); }
+            100% { background: linear-gradient(45deg, #ffb3c7, #f7d8eb); }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>JayaandFiona.com</h1>
+        <h1>Welcome to Jaya & Fiona's Fun Zone!</h1>
     </header>
     <main>
-        <p>Check out cool projects here. </p>
-        <p>Join us in our <a href="https://framevr.io/joz-ojd-jic">Virtual World</a>!</p>
-        <p>Quick fun Math game: <a href="https://samperet.github.io/PopMath/">PopMath</a>!</p>
-        
+        <p>Explore our cool projects and games!</p>
+        <p>Join us in our <a href="https://framevr.io/joz-ojd-jic" target="_blank">Virtual World</a>!</p>
+        <p>Quick fun Math game: <a href="https://samperet.github.io/PopMath/" target="_blank">PopMath</a>!</p>
+        <p>Geography Quiz Adventure: <a href="https://samperet.github.io/GeographyQuiz/" target="_blank">Geography Quiz</a>!</p>
     </main>
     <footer>
-        <p>&copy; 2024 J&F</p>
+        <p>&copy; 2024 Jaya & Fiona's Fun Zone</p>
     </footer>
 </body>
 </html>
