@@ -8,29 +8,28 @@
     <style>
         /* Overall Styling */
         body {
-            font-family: "Comic Sans MS", sans-serif;
+            font-family: "Comic Sans MS", cursive, sans-serif;
             margin: 0;
             padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            background: linear-gradient(45deg, #f9a8d4, #f3d1f4);
-            color: #555;
+            background: linear-gradient(to bottom, #ffefba, #ffffff);
+            color: #333;
             text-align: center;
-            animation: colorChange 10s infinite alternate;
+            overflow-x: hidden;
         }
 
         /* Header */
         header {
             padding: 20px;
-            background-color: #ff6bcb;
+            background-color: #ff6ec7;
             color: #fff;
             width: 100%;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            font-size: 1.8em;
-            letter-spacing: 1px;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin: 0;
+            text-shadow: 2px 2px #ffa6e9;
         }
 
         /* Main Content */
@@ -38,52 +37,81 @@
             padding: 20px;
         }
 
-        p {
-            font-size: 1.2em;
+        main p {
+            font-size: 1.4em;
+            margin: 20px 0;
         }
 
         /* Buttons */
-        a {
+        a.button {
             color: #fff;
             text-decoration: none;
-            background-color: #ff94d8;
-            padding: 10px 20px;
+            background-color: #ffcc00;
+            padding: 15px 30px;
             margin: 10px;
-            border-radius: 20px;
+            border-radius: 50px;
+            font-size: 1.2em;
+            display: inline-block;
             transition: transform 0.3s, background-color 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
 
-        a:hover {
-            transform: scale(1.1);
-            background-color: #ffa7e2;
+        a.button:hover {
+            transform: translateY(-5px);
+            background-color: #ffdb4d;
         }
 
         /* Footer */
         footer {
-            margin-top: auto;
             padding: 10px;
-            background-color: #ff6bcb;
+            background-color: #ff6ec7;
             color: #fff;
             width: 100%;
             font-size: 1em;
         }
 
-        /* Background Animation */
-        @keyframes colorChange {
-            0% { background: linear-gradient(45deg, #f9a8d4, #f3d1f4); }
-            100% { background: linear-gradient(45deg, #ffb3c7, #f7d8eb); }
+        /* Floating Animations */
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+
+        .floating-circle {
+            position: absolute;
+            border-radius: 50%;
+            background-color: rgba(255, 183, 197, 0.7);
+            width: 50px;
+            height: 50px;
+            animation: float 6s infinite;
+        }
+
+        .circle1 {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .circle2 {
+            top: 60%;
+            left: 85%;
+            animation-delay: 2s;
         }
     </style>
 </head>
 <body>
+    <!-- Floating Elements -->
+    <div class="floating-circle circle1"></div>
+    <div class="floating-circle circle2"></div>
+
     <header>
         <h1>Welcome to Jaya & Fiona's Fun Zone!</h1>
     </header>
     <main>
-        <p>Explore our cool projects and games!</p>
-        <p>Join us in our <a href="https://framevr.io/joz-ojd-jic" target="_blank">Virtual World</a>!</p>
-        <p>Quick fun Math game: <a href="https://samperet.github.io/PopMath/" target="_blank">PopMath</a>!</p>
-        <p>Geography Quiz Adventure: <a href="https://samperet.github.io/GeographyQuiz/" target="_blank">Geography Quiz</a>!</p>
+        <p>✨ Explore our cool projects and games! ✨</p>
+        <p><a href="https://framevr.io/joz-ojd-jic" target="_blank" class="button">Join Our Virtual World</a></p>
+        <p><a href="https://samperet.github.io/PopMath/" target="_blank" class="button">Play PopMath!</a></p>
+        <p><a href="https://samperet.github.io/GeographyQuiz/" target="_blank" class="button">Take the Geography Quiz!</a></p>
     </main>
     <footer>
         <p>&copy; 2024 Jaya & Fiona's Fun Zone</p>
