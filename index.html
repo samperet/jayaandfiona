@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Welcome to JayaandFiona.com">
-    <title>JayaandFiona.com</title>
+    <title>Jaya and Fiona's Fun Zone</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Happy+Monkey&display=swap" rel="stylesheet">
     <style>
         /* Overall Styling */
@@ -12,7 +12,7 @@
             font-family: "Montserrat", sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(to bottom, #ffefba, #ffffff);
+            background-color: #ffffff;
             color: #333;
             text-align: center;
             overflow-x: hidden;
@@ -21,19 +21,12 @@
         /* Header */
         header {
             padding: 20px;
-            background: linear-gradient(45deg, #ff6ec7, #ffa6e9);
+            background-color: #ff6ec7;
             color: #fff;
             width: 100%;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            animation: gradient 10s ease infinite;
             position: relative;
             z-index: 10;
-        }
-
-        @keyframes gradient {
-            0% { background-color: #ff6ec7; }
-            50% { background-color: #ffa6e9; }
-            100% { background-color: #ff6ec7; }
         }
 
         header h1 {
@@ -64,23 +57,53 @@
             background-color: #ffcc00;
             padding: 20px;
             margin: 15px auto;
-            border-radius: 15px;
+            border-radius: 50px;
+            border: 1px solid #000;
             font-size: 1.2em;
             display: flex;
             flex-direction: column;
             align-items: center;
             width: 100%;
             max-width: 500px;
-            transition: transform 0.3s, background-color 0.3s;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
             text-align: center;
             position: relative;
             z-index: 10;
+            box-shadow: none;
+            transform: translateY(0);
+            transition: background-color 0.3s;
         }
 
+        /* Double pop animation for hover and mouse-off */
+        @keyframes doublePopEffect {
+            0% {
+                transform: translateY(0);
+                box-shadow: none;
+            }
+            25% {
+                transform: translateY(-8px);
+                box-shadow: 0 8px 0 #000;
+            }
+            50% {
+                transform: translateY(-6px);
+                box-shadow: 0 6px 0 #000;
+            }
+            75% {
+                transform: translateY(-7px);
+                box-shadow: 0 7px 0 #000;
+            }
+            100% {
+                transform: translateY(-6px);
+                box-shadow: 0 6px 0 #000;
+            }
+        }
+
+        /* Hover and Mouse-Off Animation */
         a.button:hover {
-            transform: translateY(-5px);
-            background-color: #ffdb4d;
+            animation: doublePopEffect 0.4s forwards;
+        }
+
+        a.button.mouseoff {
+            animation: doublePopEffect 0.4s reverse forwards;
         }
 
         a.button h1 {
@@ -95,54 +118,60 @@
             margin: 5px 0 0;
         }
 
-        /* Floating Animations */
+        /* Floating and Pop Animations */
         @keyframes float {
             0% { transform: translateY(0); }
             50% { transform: translateY(-20px); }
             100% { transform: translateY(0); }
         }
 
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes popDisappear {
+            0% { transform: scale(1); opacity: 1; }
+            70% { transform: scale(1.5); opacity: 0.7; }
+            100% { transform: scale(0); opacity: 0; }
+        }
+
         .floating-circle {
             position: absolute;
             border-radius: 50%;
-            animation: float 6s infinite;
+            animation: float 6s infinite, fadeIn 2s ease-in-out;
             z-index: 1;
+            cursor: pointer;
+            opacity: 0;
         }
 
-        .circle1 {
-            width: 50px;
-            height: 50px;
-            background-color: rgba(255, 183, 197, 0.7);
-            top: 20%;
-            left: 10%;
-            animation-delay: 0s;
+        .floating-circle.pop {
+            animation: popDisappear 0.4s forwards;
         }
 
-        .circle2 {
-            width: 30px;
-            height: 30px;
-            background-color: rgba(100, 149, 237, 0.7);
-            top: 60%;
-            left: 85%;
-            animation-delay: 2s;
+        /* Footer */
+        footer {
+            margin-top: 40px;
+            padding: 20px;
+            background: #f4f4f4;
+            text-align: center;
+            position: relative;
         }
 
-        .circle3 {
-            width: 70px;
-            height: 70px;
-            background-color: rgba(255, 215, 0, 0.6);
-            top: 40%;
-            left: 50%;
-            animation-delay: 4s;
+        footer p {
+            margin: 10px 0;
+            font-size: 1em;
+            color: #333;
         }
 
-        .circle4 {
-            width: 40px;
-            height: 40px;
-            background-color: rgba(144, 238, 144, 0.6);
-            top: 70%;
-            left: 30%;
-            animation-delay: 6s;
+        footer a {
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            color: #ff6ec7;
         }
 
         /* Responsive Design */
@@ -150,7 +179,7 @@
             header h1 {
                 font-size: 2em;
             }
-            
+
             a.button {
                 padding: 15px;
                 font-size: 1em;
@@ -160,57 +189,92 @@
                 font-size: 1.2em;
             }
         }
-
-        /* Contact Link */
-        .contact-link {
-            font-size: 1em;
-            margin-top: 30px;
-            color: #333;
-        }
-        
-        .contact-link a {
-            color: #333;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .contact-link a:hover {
-            color: #ff6ec7;
-        }
     </style>
 </head>
 <body>
     <!-- Floating Elements -->
-    <div class="floating-circle circle1"></div>
-    <div class="floating-circle circle2"></div>
-    <div class="floating-circle circle3"></div>
-    <div class="floating-circle circle4"></div>
+    <div class="floating-circle circle1" onclick="popAndRemove(this)" style="width: 50px; height: 50px; background-color: rgba(255, 183, 197, 0.7);"></div>
+    <div class="floating-circle circle2" onclick="popAndRemove(this)" style="width: 30px; height: 30px; background-color: rgba(100, 149, 237, 0.7);"></div>
+    <div class="floating-circle circle3" onclick="popAndRemove(this)" style="width: 70px; height: 70px; background-color: rgba(255, 215, 0, 0.6);"></div>
+    <div class="floating-circle circle4" onclick="popAndRemove(this)" style="width: 40px; height: 40px; background-color: rgba(144, 238, 144, 0.6);"></div>
 
     <header>
         <h1>JayaandFiona.com</h1>
     </header>
-    <main>
+      <main>
         <p>✨ Explore our cool projects and games! ✨</p>
-        <a href="https://framevr.io/joz-ojd-jic" target="_blank" class="button">
+        <a href="https://framevr.io/joz-ojd-jic" target="_blank" class="button" onmouseenter="handleMouseEnter(this)" onmouseleave="handleMouseLeave(this)">
             <h1>Join Our Virtual World</h1>
-            <p>Meet in our VR playspace!</p>
+            <p>Experience a new world online!</p>
         </a>
-        <a href="https://samperet.github.io/PopMath/" target="_blank" class="button">
+        <a href="https://samperet.github.io/PopMath/" target="_blank" class="button" onmouseenter="handleMouseEnter(this)" onmouseleave="handleMouseLeave(this)">
             <h1>Play PopMath!</h1>
             <p>A Speed Math game to challenge your skills!</p>
         </a>
-        <a href="https://samperet.github.io/GeographyGame/" target="_blank" class="button">
+        <a href="https://samperet.github.io/GeographyQuiz/" target="_blank" class="button" onmouseenter="handleMouseEnter(this)" onmouseleave="handleMouseLeave(this)">
             <h1>Take the Geography Quiz!</h1>
-            <p>Guess the Continent of Countries!</p>
+            <p>Test your knowledge of the world!</p>
         </a>
-        <a href="https://samperet.github.io/Charades/" target="_blank" class="button">
+        <a href="https://samperet.github.io/Charades/" target="_blank" class="button" onmouseenter="handleMouseEnter(this)" onmouseleave="handleMouseLeave(this)">
             <h1>Play Charades!</h1>
-            <p>Have fun with this family classic!</p>
+            <p>Have fun with friends and family in this classic game!</p>
+        </a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfrJUnoKj5-CWJ5ix7qRqxC6p7Hbh55NPDXn7k69kNlH-vV_w/viewform?usp=sf_link" target="_blank" class="button" onmouseenter="handleMouseEnter(this)" onmouseleave="handleMouseLeave(this)">
+            <h1>Give Us Your Contact Information</h1>
+            <p>You may or may not hear back from us!</p>
         </a>
     </main>
-    <div class="contact-link">
+    <footer>
         <p><a href="mailto:samperet@gmail.com">Email Dad</a></p>
-    </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const bubbles = document.querySelectorAll(".floating-circle");
+            bubbles.forEach(bubble => {
+                setRandomPosition(bubble);
+                bubble.style.opacity = "1"; // Start visible with fade-in effect
+            });
+        });
+
+        function setRandomPosition(element) {
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
+            const randomX = Math.random() * (windowWidth - element.clientWidth);
+            const randomY = Math.random() * (windowHeight - element.clientHeight);
+            element.style.top = `${randomY}px`;
+            element.style.left = `${randomX}px`;
+        }
+
+        function popAndRemove(element) {
+            element.classList.add("pop"); // Trigger pop animation
+            element.addEventListener("animationend", () => {
+                element.remove(); // Remove after animation
+                createNewBubble(); // Generate a new bubble
+            });
+        }
+
+        function createNewBubble() {
+            const newBubble = document.createElement("div");
+            newBubble.className = "floating-circle";
+            newBubble.style.width = `${30 + Math.random() * 50}px`;
+            newBubble.style.height = newBubble.style.width;
+            newBubble.style.backgroundColor = `rgba(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, 0.7)`;
+            document.body.appendChild(newBubble);
+            setRandomPosition(newBubble);
+            newBubble.style.opacity = "1";
+            newBubble.onclick = () => popAndRemove(newBubble);
+        }
+
+        function handleMouseEnter(button) {
+            button.classList.remove("mouseoff");
+            button.classList.add("hover");
+        }
+
+        function handleMouseLeave(button) {
+            button.classList.remove("hover");
+            button.classList.add("mouseoff");
+        }
+    </script>
 </body>
 </html>
-
