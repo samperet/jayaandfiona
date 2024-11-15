@@ -16,6 +16,10 @@
             color: #333;
             text-align: center;
             overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            position: relative;
         }
 
         /* Header */
@@ -43,6 +47,7 @@
             margin: 0 auto;
             position: relative;
             z-index: 10;
+            flex: 1; /* Allows the main content to grow and push the footer down */
         }
 
         main p {
@@ -137,10 +142,10 @@
         }
 
         .floating-circle {
-            position: absolute;
+            position: fixed; /* Changed from absolute to fixed */
             border-radius: 50%;
             animation: float 6s infinite, fadeIn 2s ease-in-out;
-            z-index: 1;
+            z-index: 5; /* Lower z-index to appear below buttons */
             cursor: pointer;
             opacity: 0;
         }
@@ -156,6 +161,7 @@
             background: #f4f4f4;
             text-align: center;
             position: relative;
+            z-index: 10;
         }
 
         footer p {
@@ -201,7 +207,7 @@
     <header>
         <h1>JayaandFiona.com</h1>
     </header>
-      <main>
+    <main>
         <p>✨ Explore our cool projects and games! ✨</p>
         <a href="https://framevr.io/joz-ojd-jic" target="_blank" class="button" onmouseenter="handleMouseEnter(this)" onmouseleave="handleMouseLeave(this)">
             <h1>Join Our Virtual World</h1>
@@ -240,7 +246,35 @@
         function setRandomPosition(element) {
             const windowWidth = window.innerWidth;
             const windowHeight = window.innerHeight;
-            const randomX = Math.random() * (windowWidth - element.clientWidth);
+            const main = document.querySelector('main');
+            const mainRect = main.getBoundingClientRect();
+            const mainWidth = mainRect.width;
+            const mainMarginLeft = mainRect.left;
+
+            // Choose left or right side
+            const side = Math.random() < 0.5 ? 'left' : 'right';
+            let randomX;
+
+            if (side === 'left') {
+                const maxLeft = mainMarginLeft - element.clientWidth;
+                if (maxLeft > 0) {
+                    randomX = Math.random() * maxLeft;
+                } else {
+                    // If not enough space on left, place on the right
+                    const availableRight = windowWidth - (mainMarginLeft + mainWidth) - element.clientWidth;
+                    randomX = mainMarginLeft + mainWidth + (availableRight > 0 ? Math.random() * availableRight : 0);
+                }
+            } else {
+                const availableRight = windowWidth - (mainMarginLeft + mainWidth) - element.clientWidth;
+                if (availableRight > 0) {
+                    randomX = mainMarginLeft + mainWidth + Math.random() * availableRight;
+                } else {
+                    // If not enough space on right, place on the left
+                    const maxLeft = mainMarginLeft - element.clientWidth;
+                    randomX = maxLeft > 0 ? Math.random() * maxLeft : 0;
+                }
+            }
+
             const randomY = Math.random() * (windowHeight - element.clientHeight);
             element.style.top = `${randomY}px`;
             element.style.left = `${randomX}px`;
@@ -257,8 +291,9 @@
         function createNewBubble() {
             const newBubble = document.createElement("div");
             newBubble.className = "floating-circle";
-            newBubble.style.width = `${30 + Math.random() * 50}px`;
-            newBubble.style.height = newBubble.style.width;
+            const size = 30 + Math.random() * 50;
+            newBubble.style.width = `${size}px`;
+            newBubble.style.height = `${size}px`;
             newBubble.style.backgroundColor = `rgba(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, 0.7)`;
             document.body.appendChild(newBubble);
             setRandomPosition(newBubble);
@@ -275,6 +310,12 @@
             button.classList.remove("hover");
             button.classList.add("mouseoff");
         }
+
+        // Optional: Reposition bubbles on window resize to ensure they remain on the sides
+        window.addEventListener("resize", () => {
+            const bubbles = document.querySelectorAll(".floating-circle");
+            bubbles.forEach(bubble => setRandomPosition(bubble));
+        });
     </script>
 </body>
 </html>
