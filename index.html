@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Welcome to JayaandFiona.com">
     <title>Jaya and Fiona's Fun Zone</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Happy+Monkey&display=swap" rel="stylesheet">
     <style>
         /* Overall Styling */
         body {
-            font-family: "Comic Sans MS", cursive, sans-serif;
+            font-family: "Montserrat", sans-serif;
             margin: 0;
             padding: 0;
             background: linear-gradient(to bottom, #ffefba, #ffffff);
@@ -20,21 +21,35 @@
         /* Header */
         header {
             padding: 20px;
-            background-color: #ff6ec7;
+            background: linear-gradient(45deg, #ff6ec7, #ffa6e9);
             color: #fff;
             width: 100%;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: gradient 10s ease infinite;
+            position: relative;
+            z-index: 10;
+        }
+
+        @keyframes gradient {
+            0% { background-color: #ff6ec7; }
+            50% { background-color: #ffa6e9; }
+            100% { background-color: #ff6ec7; }
         }
 
         header h1 {
             font-size: 2.5em;
             margin: 0;
+            font-family: 'Happy Monkey', cursive;
             text-shadow: 2px 2px #ffa6e9;
         }
 
         /* Main Content */
         main {
             padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
         }
 
         main p {
@@ -47,13 +62,20 @@
             color: #fff;
             text-decoration: none;
             background-color: #ffcc00;
-            padding: 15px 30px;
-            margin: 10px;
-            border-radius: 50px;
+            padding: 20px;
+            margin: 15px auto;
+            border-radius: 15px;
             font-size: 1.2em;
-            display: inline-block;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 500px;
             transition: transform 0.3s, background-color 0.3s;
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            text-align: center;
+            position: relative;
+            z-index: 10;
         }
 
         a.button:hover {
@@ -61,13 +83,16 @@
             background-color: #ffdb4d;
         }
 
-        /* Footer */
-        footer {
-            padding: 10px;
-            background-color: #ff6ec7;
-            color: #fff;
-            width: 100%;
+        a.button h1 {
+            font-size: 1.5em;
+            margin: 0;
+            font-family: "Happy Monkey", cursive;
+        }
+
+        a.button p {
             font-size: 1em;
+            font-family: "Montserrat", sans-serif;
+            margin: 5px 0 0;
         }
 
         /* Floating Animations */
@@ -80,22 +105,77 @@
         .floating-circle {
             position: absolute;
             border-radius: 50%;
-            background-color: rgba(255, 183, 197, 0.7);
-            width: 50px;
-            height: 50px;
             animation: float 6s infinite;
+            z-index: 1;
         }
 
         .circle1 {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 183, 197, 0.7);
             top: 20%;
             left: 10%;
             animation-delay: 0s;
         }
 
         .circle2 {
+            width: 30px;
+            height: 30px;
+            background-color: rgba(100, 149, 237, 0.7);
             top: 60%;
             left: 85%;
             animation-delay: 2s;
+        }
+
+        .circle3 {
+            width: 70px;
+            height: 70px;
+            background-color: rgba(255, 215, 0, 0.6);
+            top: 40%;
+            left: 50%;
+            animation-delay: 4s;
+        }
+
+        .circle4 {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(144, 238, 144, 0.6);
+            top: 70%;
+            left: 30%;
+            animation-delay: 6s;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 2em;
+            }
+            
+            a.button {
+                padding: 15px;
+                font-size: 1em;
+            }
+
+            a.button h1 {
+                font-size: 1.2em;
+            }
+        }
+
+        /* Contact Link */
+        .contact-link {
+            font-size: 1em;
+            margin-top: 30px;
+            color: #333;
+        }
+        
+        .contact-link a {
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .contact-link a:hover {
+            color: #ff6ec7;
         }
     </style>
 </head>
@@ -103,18 +183,34 @@
     <!-- Floating Elements -->
     <div class="floating-circle circle1"></div>
     <div class="floating-circle circle2"></div>
+    <div class="floating-circle circle3"></div>
+    <div class="floating-circle circle4"></div>
 
     <header>
-        <h1>Welcome to Jaya & Fiona's Fun Zone!</h1>
+        <h1>JayaandFiona.com</h1>
     </header>
     <main>
         <p>✨ Explore our cool projects and games! ✨</p>
-        <p><a href="https://framevr.io/joz-ojd-jic" target="_blank" class="button">Join Our Virtual World</a></p>
-        <p><a href="https://samperet.github.io/PopMath/" target="_blank" class="button">Play PopMath!</a></p>
-        <p><a href="https://samperet.github.io/GeographyQuiz/" target="_blank" class="button">Take the Geography Quiz!</a></p>
+        <a href="https://framevr.io/joz-ojd-jic" target="_blank" class="button">
+            <h1>Join Our Virtual World</h1>
+            <p>Meet in our VR playspace!</p>
+        </a>
+        <a href="https://samperet.github.io/PopMath/" target="_blank" class="button">
+            <h1>Play PopMath!</h1>
+            <p>A Speed Math game to challenge your skills!</p>
+        </a>
+        <a href="https://samperet.github.io/GeographyQuiz/" target="_blank" class="button">
+            <h1>Take the Geography Quiz!</h1>
+            <p>Guess the Continent of Countries!</p>
+        </a>
+        <a href="https://samperet.github.io/Charades/" target="_blank" class="button">
+            <h1>Play Charades!</h1>
+            <p>Have fun with this family classic!</p>
+        </a>
     </main>
-    <footer>
-        <p>&copy; 2024 Jaya & Fiona's Fun Zone</p>
-    </footer>
+    <div class="contact-link">
+        <p><a href="mailto:samperet@gmail.com">Email Dad</a></p>
+    </div>
 </body>
 </html>
+
