@@ -180,6 +180,24 @@
             color: #ff6ec7;
         }
 
+        /* Responsive iframe */
+        .iframe-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 66.66%; /* Adjust aspect ratio as needed */
+            height: 0;
+            margin-top: 20px;
+        }
+
+        .iframe-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
         /* Responsive Design */
         @media (max-width: 600px) {
             header h1 {
@@ -195,16 +213,6 @@
                 font-size: 1.2em;
             }
         }
-        .iframe-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Adjust height as needed */
-}
-
-iframe {
-    border: none; /* Optional: Remove border around the iframe */
-}
     </style>
 </head>
 <body>
@@ -233,7 +241,7 @@ iframe {
         </a>
         <a href="https://samperet.github.io/Charades/" target="_blank" class="button" onmouseenter="handleMouseEnter(this)" onmouseleave="handleMouseLeave(this)">
             <h1>Play Charades!</h1>
-            <p>Have fun with this familly classic!</p>
+            <p>Have fun with this family classic!</p>
         </a>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSfrJUnoKj5-CWJ5ix7qRqxC6p7Hbh55NPDXn7k69kNlH-vV_w/viewform?usp=sf_link" target="_blank" class="button" onmouseenter="handleMouseEnter(this)" onmouseleave="handleMouseLeave(this)">
             <h1>Give Us Your Contact Information</h1>
@@ -241,10 +249,10 @@ iframe {
         </a>
     </main>
     <footer>
-
-        <iframe src="https://samperet.github.io/DinoGame/" width="600" height="400" style="border: none; margin-top: 20px;"></iframe>
+        <div class="iframe-container">
+            <iframe src="https://samperet.github.io/DinoGame/"></iframe>
+        </div>
         <p><a href="mailto:samperet@gmail.com">Email Dad</a></p>
-
     </footer>
 
     <script>
