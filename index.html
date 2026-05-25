@@ -52,6 +52,11 @@
             position: relative;
             z-index: 10;
             flex: 1; /* Allows the main content to grow and push the footer down */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         main p {
@@ -72,14 +77,17 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
             width: 100%;
             max-width: 500px;
+            box-sizing: border-box;
             text-align: center;
             position: relative;
             z-index: 10;
             box-shadow: none;
             transform: translateY(0);
             transition: background-color 0.3s;
+            -webkit-tap-highlight-color: transparent;
         }
 
         /* Double pop animation for hover and mouse-off */
@@ -194,17 +202,44 @@
 
         /* Responsive Design */
         @media (max-width: 600px) {
+            header {
+                padding: 16px;
+            }
+
             header h1 {
                 font-size: 2em;
             }
 
+            main {
+                padding: 16px;
+            }
+
             a.button {
-                padding: 15px;
+                padding: 16px;
+                margin: 10px auto;
                 font-size: 1em;
             }
 
             a.button h1 {
                 font-size: 1.2em;
+            }
+
+            footer .iframe-container iframe {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            header h1 {
+                font-size: 1.7em;
+            }
+
+            a.button h1 {
+                font-size: 1.1em;
+            }
+
+            a.button p {
+                font-size: 0.9em;
             }
         }
     </style>
@@ -220,20 +255,12 @@
         <h1>JayaandFiona.com</h1>
     </header>
    <main>
-    <p>✨ Explore our cool projects and games! ✨</p>
-   
-       
-           <a href="       https://samperet.github.io/MultiplicationGame/
-" class="button" onmouseenter="handleMouseEnter(this)" onmouseleave="handleMouseLeave(this)">
+           <a href="https://samperet.github.io/MultiplicationGame/" class="button" onmouseenter="handleMouseEnter(this)" onmouseleave="handleMouseLeave(this)">
         <h1>Math Racer</h1>
         <p>Multiplication Competition</p>
     </a>
 
-       
-       <a href="https://framevr.io/joz-ojd-jic" class="button" onmouseenter="handleMouseEnter(this)" onmouseleave="handleMouseLeave(this)">
-        <h1>Join Our Virtual World</h1>
-        <p>Experience a new world online!</p>
-    </a>
+
     <a href="https://samperet.github.io/PopMath/" class="button" onmouseenter="handleMouseEnter(this)" onmouseleave="handleMouseLeave(this)">
         <h1>Play PopMath!</h1>
         <p>A Speed Math game to challenge your skills!</p>
@@ -249,10 +276,6 @@
            <a href="https://samperet.github.io/Connect4/" class="button" onmouseenter="handleMouseEnter(this)" onmouseleave="handleMouseLeave(this)">
         <h1>Connect 4!</h1>
         <p>A Milton Bradley knockoff!</p>
-    </a>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfrJUnoKj5-CWJ5ix7qRqxC6p7Hbh55NPDXn7k69kNlH-vV_w/viewform?usp=sf_link" class="button" onmouseenter="handleMouseEnter(this)" onmouseleave="handleMouseLeave(this)">
-        <h1>Send us a Message</h1>
-        <p>Leave your address for a potential letter!</p>
     </a>
     <a href="https://vimeo.com/user202495841" class="button" onmouseenter="handleMouseEnter(this)" onmouseleave="handleMouseLeave(this)">
         <h1>Video Library</h1>
